@@ -1,0 +1,120 @@
+object Form1: TForm1
+  Left = 172
+  Height = 761
+  Top = 128
+  Width = 1047
+  Caption = 'Image Book'
+  ClientHeight = 761
+  ClientWidth = 1047
+  OnCreate = FormCreate
+  LCLVersion = '1.6.0.4'
+  object PageControl1: TPageControl
+    Left = 0
+    Height = 761
+    Top = 0
+    Width = 1047
+    ActivePage = TabSheet1
+    Align = alClient
+    TabIndex = 0
+    TabOrder = 0
+    TabPosition = tpBottom
+    OnChange = PageControl1Change
+    object TabSheet1: TTabSheet
+      Caption = 'TabSheet1'
+      ClientHeight = 722
+      ClientWidth = 1041
+      object Panel1: TPanel
+        Left = 0
+        Height = 722
+        Top = 0
+        Width = 242
+        Align = alLeft
+        ClientHeight = 722
+        ClientWidth = 242
+        TabOrder = 0
+        object ShellTreeView1: TShellTreeView
+          Left = 1
+          Height = 311
+          Top = 1
+          Width = 240
+          Align = alTop
+          FileSortType = fstNone
+          Root = '/Users/gma'
+          TabOrder = 0
+          OnChange = ShellTreeView1Change
+          ObjectTypes = [otFolders]
+          ShellListView = ShellListView1
+        end
+        object ShellListView1: TShellListView
+          Left = 1
+          Height = 324
+          Top = 397
+          Width = 240
+          Align = alBottom
+          Color = clDefault
+          LargeImages = ImageList1
+          SmallImages = ImageList1
+          TabOrder = 1
+          ViewStyle = vsIcon
+          OnChange = ShellListView1Change
+          OnDblClick = ShellListView1DblClick
+          ObjectTypes = [otNonFolders]
+          ShellTreeView = ShellTreeView1
+        end
+      end
+      object DrawGrid1: TDrawGrid
+        Left = 242
+        Height = 722
+        Top = 0
+        Width = 799
+        Align = alClient
+        ColCount = 3
+        DefaultColWidth = 256
+        DefaultDrawing = False
+        DefaultRowHeight = 256
+        ExtendedSelect = False
+        FixedCols = 0
+        FixedRows = 0
+        TabOrder = 1
+        OnDrawCell = DrawGrid1DrawCell
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'TabSheet2'
+      ClientHeight = 677
+      ClientWidth = 806
+      object Panel2: TPanel
+        Left = 0
+        Height = 677
+        Top = 0
+        Width = 170
+        Align = alLeft
+        TabOrder = 0
+      end
+      object ScrollBox1: TScrollBox
+        Left = 170
+        Height = 677
+        Top = 0
+        Width = 636
+        HorzScrollBar.Page = 306
+        VertScrollBar.Page = 322
+        Align = alClient
+        ClientHeight = 662
+        ClientWidth = 621
+        TabOrder = 1
+        object Image1: TImage
+          Left = 16
+          Height = 290
+          Top = 32
+          Width = 290
+        end
+      end
+    end
+  end
+  object ImageList1: TImageList
+    Height = 256
+    Width = 256
+    left = 512
+    top = 176
+  end
+end
