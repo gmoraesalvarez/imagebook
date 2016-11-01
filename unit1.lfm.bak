@@ -1,7 +1,7 @@
 object Form1: TForm1
-  Left = 180
+  Left = 172
   Height = 761
-  Top = 145
+  Top = 128
   Width = 1047
   Caption = 'Image Book'
   ClientHeight = 761
@@ -68,46 +68,59 @@ object Form1: TForm1
         Top = 0
         Width = 799
         Align = alClient
-        ColCount = 0
+        ColCount = 3
         DefaultColWidth = 256
         DefaultDrawing = False
         DefaultRowHeight = 256
         ExtendedSelect = False
         FixedCols = 0
         FixedRows = 0
-        RowCount = 0
         TabOrder = 1
+        OnClick = DrawGrid1Click
+        OnDblClick = DrawGrid1DblClick
         OnDrawCell = DrawGrid1DrawCell
+        OnSelectCell = DrawGrid1SelectCell
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'TabSheet2'
-      ClientHeight = 677
-      ClientWidth = 806
+      ClientHeight = 722
+      ClientWidth = 1041
       object Panel2: TPanel
         Left = 0
-        Height = 677
+        Height = 722
         Top = 0
         Width = 170
         Align = alLeft
+        ClientHeight = 722
+        ClientWidth = 170
         TabOrder = 0
+        object SpeedButton1: TSpeedButton
+          Left = 8
+          Height = 32
+          Top = 8
+          Width = 32
+          Caption = '+'
+          OnClick = SpeedButton1Click
+        end
       end
       object ScrollBox1: TScrollBox
         Left = 170
-        Height = 677
+        Height = 722
         Top = 0
-        Width = 636
-        HorzScrollBar.Page = 306
-        VertScrollBar.Page = 322
+        Width = 871
+        HorzScrollBar.Page = 600
+        VertScrollBar.Page = 600
         Align = alClient
-        ClientHeight = 662
-        ClientWidth = 621
+        ClientHeight = 707
+        ClientWidth = 856
         TabOrder = 1
         object Image1: TImage
-          Left = 16
-          Height = 290
-          Top = 32
-          Width = 290
+          Left = 0
+          Height = 600
+          Top = 0
+          Width = 600
+          Stretch = True
         end
       end
     end

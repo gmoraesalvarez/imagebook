@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  ComCtrls, Grids, ShellCtrls, StdCtrls, ColorBox,JPEGLib, Types;
+  ComCtrls, Grids, ShellCtrls, StdCtrls, ColorBox, Buttons,JPEGLib, Types;
 
 type
 
@@ -22,10 +22,15 @@ type
     ScrollBox1: TScrollBox;
     ShellListView1: TShellListView;
     ShellTreeView1: TShellTreeView;
+    SpeedButton1: TSpeedButton;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
+    procedure DrawGrid1Click(Sender: TObject);
+    procedure DrawGrid1DblClick(Sender: TObject);
     procedure DrawGrid1DrawCell(Sender: TObject; aCol, aRow: Integer;
       aRect: TRect; aState: TGridDrawState);
+    procedure DrawGrid1SelectCell(Sender: TObject; aCol, aRow: Integer;
+      var CanSelect: Boolean);
     procedure FormCreate(Sender: TObject);
     procedure ListBox1DrawItem(Control: TWinControl; Index: Integer;
       ARect: TRect; State: TOwnerDrawState);
@@ -34,6 +39,7 @@ type
       Change: TItemChange);
     procedure ShellListView1DblClick(Sender: TObject);
     procedure ShellTreeView1Change(Sender: TObject; Node: TTreeNode);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -78,9 +84,31 @@ begin
     DrawGrid1.Canvas.StretchDraw(ARect,leicon);
     //DrawGrid1.Canvas.TextOut(aRect.Left+2,aRect.Top+2,inttostr(item));
   end;
-
+  if gdSelected in aState then DrawGrid1.Canvas.TextOut(aRect.Left,aRect.Top,'*');
   leicon.Free;
   //if item >DrawGrid1.ColCount*DrawGrid1.RowCount then item:=0;
+end;
+
+procedure TForm1.DrawGrid1SelectCell(Sender: TObject; aCol, aRow: Integer;
+  var CanSelect: Boolean);
+begin
+
+end;
+
+procedure TForm1.DrawGrid1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.DrawGrid1DblClick(Sender: TObject);
+var
+  sel:integer;
+begin
+  sel:=DrawGrid1.Selection.top*3+DrawGrid1.Selection.left;
+  Image1.Picture.LoadFromFile(ShellListView1.Root+'/'+ShellListView1.Items[sel].Caption);
+  Image1.Width:=600;
+  Image1.Height:=Image1.Picture.Bitmap.Height div (Image1.Picture.Bitmap.Width div 600);
+
 end;
 
 procedure TForm1.ListBox1DrawItem(Control: TWinControl; Index: Integer;
@@ -126,13 +154,17 @@ begin
         ShellListView1.Items[i].Caption);
       leimg.Canvas.StretchDraw(Rect(0,0,255,255),leicon.Picture.Bitmap);
       ImageList1.Add(leimg,nil);
-      //DrawGrid1.Canvas.Refresh;
       //Application.ProcessMessages;
       form1.Caption:=inttostr(ImageList1.Count);
     end;
   end;
   leicon.free;
   leicon.Free;
+end;
+
+procedure TForm1.SpeedButton1Click(Sender: TObject);
+begin
+
 end;
 
 end.
